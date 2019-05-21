@@ -1,0 +1,9 @@
+<h3>Sign up</h3>
+<form method="post">
+  {% csrf_token %}
+  {% include 'includes/form.html' %}
+  <button type="submit">Create an account</button>
+</form>
+<div>
+  Already have an account? <a href="{% url 'login' %}">Log in</a>
+</div>

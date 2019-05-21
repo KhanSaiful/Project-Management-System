@@ -1,0 +1,25 @@
+{% extends "todo/base.html" %}
+{% block title %}Delete list{% endblock %}
+
+{% block content %}
+  {% if user.is_staff %}
+  <h1>Delete the Task</h1>
+
+
+
+
+  <h3>Are you sure you want to do that?</h3>
+
+  <form action="" method="post" accept-charset="utf-8">
+    {% csrf_token %}
+    <input type="hidden" name="task_list" value="{{ task.id }}">
+    <p>
+      <a href="{% url 'todo:task_detail' task_id  %}" class="btn btn-success">Return to Task: {{ task_list.name }}</a>
+      <input type="submit" name="delete-confirm" value="Do it! &rarr;" class="btn btn-danger">
+    </p>
+  </form>
+
+
+{% else %}
+  <p>Sorry, you don't have permission to delete project. Please contact your group administrator.</p>
+{% endif %} {% endblock %}
